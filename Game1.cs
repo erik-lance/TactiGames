@@ -21,6 +21,11 @@ namespace TactiGames
             // TODO: Add your initialization logic here
 
             base.Initialize();
+
+            // Set the window size
+            _graphics.PreferredBackBufferWidth = 1280;
+            _graphics.PreferredBackBufferHeight = 720;
+            _graphics.ApplyChanges();
         }
 
         protected override void LoadContent()

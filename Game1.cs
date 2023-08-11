@@ -12,6 +12,16 @@ namespace TactiGames
 
         public float scale = 1f;
 
+        private enum GameState
+        {
+            MainMenu,
+            Game,
+            PauseMenu,
+            GameOver
+        }
+
+        private GameState _gameState = GameState.MainMenu;
+
 
         public Game1()
         {

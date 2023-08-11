@@ -10,6 +10,9 @@ namespace TactiGames
         private SpriteBatch _spriteBatch;
         private RenderTarget2D _renderTarget;
 
+        public float scale = 1f;
+
+
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -49,6 +52,11 @@ namespace TactiGames
 
         protected override void Draw(GameTime gameTime)
         {
+            // Scale the window
+            scale = 1f / (1080f / _graphics.GraphicsDevice.Viewport.Height);
+
+            GraphicsDevice.SetRenderTarget(_renderTarget);
+
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here

@@ -56,8 +56,20 @@ namespace TactiGames
             scale = 1f / (1080f / _graphics.GraphicsDevice.Viewport.Height);
 
             GraphicsDevice.SetRenderTarget(_renderTarget);
-
             GraphicsDevice.Clear(Color.CornflowerBlue);
+
+            // Start drawing
+            _spriteBatch.Begin();
+
+            _spriteBatch.End();
+
+            GraphicsDevice.SetRenderTarget(null);
+            GraphicsDevice.Clear(Color.CornflowerBlue);
+
+            // Scale Sprites to fit the window
+            _spriteBatch.Begin();
+            _spriteBatch.Draw(_renderTarget, Vector2.Zero, null, Color.White, 0f, Vector2.Zero, scale, SpriteEffects.None, 0f);
+            _spriteBatch.End();
 
             // TODO: Add your drawing code here
 

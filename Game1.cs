@@ -8,6 +8,7 @@ namespace TactiGames
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
+        private RenderTarget2D _renderTarget;
 
         public Game1()
         {
@@ -33,6 +34,7 @@ namespace TactiGames
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
+            _renderTarget= new RenderTarget2D(GraphicsDevice, 1280, 720);
         }
 
         protected override void Update(GameTime gameTime)

@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using TactiGames.Source.Menu;
 
 namespace TactiGames
 {
@@ -21,7 +22,7 @@ namespace TactiGames
         }
 
         private GameState _gameState = GameState.MainMenu;
-
+        private MainMenu _mainMenu;
 
         public Game1()
         {
@@ -45,9 +46,10 @@ namespace TactiGames
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
+            _mainMenu = new MainMenu(_spriteBatch);
 
-            // TODO: use this.Content to load your game content here
-            _renderTarget= new RenderTarget2D(GraphicsDevice, 1280, 720);
+            _renderTarget = new RenderTarget2D(GraphicsDevice, 1280, 720);
+            
         }
 
         protected override void Update(GameTime gameTime)
@@ -55,7 +57,18 @@ namespace TactiGames
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            // TODO: Add your update logic here
+            switch (_gameState)
+            {
+                case GameState.MainMenu:
+                    _mainMenu.Update(gameTime);
+                    break;
+                case GameState.Game:
+                    break;
+                case GameState.PauseMenu:
+                    break;
+                case GameState.GameOver:
+                    break;
+            }
 
             base.Update(gameTime);
         }

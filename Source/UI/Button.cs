@@ -9,18 +9,18 @@ namespace TactiGames.Source.UI
 {
     public class Button
     {
-        public Rectangle Bounds { get; private set; }
-        public string Text { get; private set; }
+        private Rectangle _bounds { get; set; }
+        private string _text { get; set; }
 
         public Button(Rectangle bounds, string text)
         {
-            Bounds = bounds;
-            Text = text;
+            _bounds = bounds;
+            _text = text;
         }
 
         public bool IsClicked(Point clickPosition)
         {
-            return Bounds.Contains(clickPosition);
+            return _bounds.Contains(clickPosition);
         }
     }
 }

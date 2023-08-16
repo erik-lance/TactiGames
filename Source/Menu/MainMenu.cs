@@ -21,9 +21,8 @@ namespace TactiGames.Source.Menu
             _spriteBatch = spriteBatch;
 
             // Load Buttons
-            _checkersButton = new Button(new Rectangle(100, 100, 200, 100), "Checkers");
-            _quitButton = new Button(new Rectangle(100, 200, 200, 100), "Quit");
-
+            _checkersButton = new Button(new Rectangle(100, 100, 200, 100), null, null, Color.White, "Checkers", LaunchGame);
+            _quitButton = new Button(new Rectangle(100, 250, 200, 100), null, null, Color.White, "Quit", QuitGame);
         }
 
         public void Update(GameTime gameTime)
@@ -35,6 +34,17 @@ namespace TactiGames.Source.Menu
         {
             // Draws the menu UI
 
+        }
+
+        // Button Actions
+        private void LaunchGame()
+        {
+
+        }
+
+        private void QuitGame()
+        {
+            
         }
     }
 }

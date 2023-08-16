@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,18 +16,25 @@ namespace TactiGames.Source.UI
         private SpriteFont _font { get; set; }
         private string _text { get; set; }
         private Color _color { get; set; }
+        private Action _onClick { get; set; }
 
-        public Button(Rectangle bounds, Texture2D texture, SpriteFont font, string text)
+        public Button(Rectangle bounds, Texture2D texture, SpriteFont font, Color color, string text, Action action)
         {
             _bounds = bounds;
             _texture = texture;
             _font = font;
+            _color = color;
             _text = text;
+            _onClick = action;
         }
 
         public void Update()
         {
             // Handle Button Logic
+            if (_bounds.Contains(Mouse.GetState().Position) && Mouse.GetState().LeftButton == ButtonState.Pressed)
+            {
+                _onClick?.Invoke(); // Trigger Assigned Action
+            }
         }
 
         public void Draw(SpriteBatch spriteBatch)
